@@ -1,0 +1,56 @@
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+import java.util.*;
+
+public class RotateMatrix {
+
+    public static void main(String... args) {
+		System.out.println(args[0]);
+		String[] numbers = args[0].split(" ");
+		System.out.println("++++++" + numbers);
+        int length = numbers.length;
+		if (length % 4 != 0) {
+			throw new IllegalArgumentException("The matrix needs to be NxN");
+		}
+
+		int lineLength = length % 4;
+		int[][] input = new int[lineLength][lineLength];
+		int argsCounter = 0;
+
+		for (int i = 0; i < lineLength; ++i) {
+			for (int j = 0; j < lineLength; ++j) {
+				input[i][j] = Integer.valueOf(numbers[argsCounter]);
+				++ argsCounter;
+			}
+		}
+
+        rotateArray(input);
+    }
+
+    public static int[][] rotateArray(int[][] input) {
+		int n = input[0].length;
+		int layer = 1;
+
+		for (int i = 0; i < n - layer; ++i) {
+			for (int j = i; j < n - layer; ++j) {
+				// first side
+				int temp = input[i][j];
+				input[i][j] = input[n - j][i];
+				input[n - j][i] = temp;
+
+				// second side
+				temp = input[i][j];
+				input[i][j] = input[n - i][n - j];
+				input[n - i][n - j] = temp;
+
+				// third side
+				temp = input[i][j];
+				input[i][j] = input[j][n - i];
+				input[j][n - i] = temp;
+			}
+			++layer;
+		}
+
+		return input;
+    }
+}
+
