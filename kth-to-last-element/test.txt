@@ -1,0 +1,12 @@
+a b c d e f g h
+3
+this is my second test and I like it
+4
+I can add numbers too 59464 324
+2
+ana are mere si portocale
+5
+I can also add special characters ' $ *£^% £$$%
+2
+This will throw an exception
+7
